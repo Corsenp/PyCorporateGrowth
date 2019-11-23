@@ -107,5 +107,7 @@ venv.bak/
 .DS_Store
 
 # Pipfile
-
 Pipfile.lock
+
+# Chromedriver
+chromedriver
