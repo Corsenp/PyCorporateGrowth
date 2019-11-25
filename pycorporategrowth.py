@@ -22,6 +22,11 @@ def init_driver():
         print("chromedriver not found, please place it on the root of the project's folder")
         sys.exit(1)
 
+def ask_for_tick():
+    tick = input("Please enter the tick (Example : APPL):\n")
+
+    return tick
+
 def main():
     '''
     Main function
@@ -30,6 +35,7 @@ def main():
 
     url = "https://www.google.fr"
     open_url(driver, url)
-    print("Corporate Growth")
+    tick = ask_for_tick()
+    print("Tick : %s" % tick)
 
 main()
