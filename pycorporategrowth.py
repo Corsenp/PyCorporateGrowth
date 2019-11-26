@@ -33,9 +33,11 @@ def main():
     '''
     driver = init_driver()
 
-    url = "https://www.google.fr"
-    open_url(driver, url)
+    
+    
     tick = ask_for_tick()
+    url = "https://finance.yahoo.com/quote/" + tick
+    open_url(driver, url)
     print("Tick : %s" % tick)
 
 main()
