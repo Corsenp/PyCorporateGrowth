@@ -4,7 +4,7 @@ PyCorporateGrowth is a school project (Assignment 9)
 
 ## Installation
 
-Python 3 is required in order to run this program
+Python 3 is required in order to run this program  
 Pipenv is required in order to run this program
 
 ### OSX
