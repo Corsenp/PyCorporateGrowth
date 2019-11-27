@@ -25,6 +25,9 @@ In order to install the dependencies run :
 pipenv install
 ```
 
+Finally we will need the ChromeDriver in order to run this project
+you can follow the [Installation steps here](https://sites.google.com/a/chromium.org/chromedriver/getting-started)
+
 Then to run the project use the following command:
 
 ```bash
