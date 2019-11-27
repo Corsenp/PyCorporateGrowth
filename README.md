@@ -34,6 +34,8 @@ Then to run the project use the following command:
 pipenv run python3.6 pycorporategrowth.py
 ```
 
+### Pipenv Shell
+
 If you want to run the script with the pipenv shell, just use :
 
 ```bash
