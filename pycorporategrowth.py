@@ -13,6 +13,11 @@ def open_url(driver, url):
         driver.quit()
     return driver
 
+def compute_growth(year_one, year_two):
+    growth = (year_two - year_one) / year_one
+    growth = growth * 100
+    return(growth)
+
 def init_driver():
     '''
     Initiate the Selenium Web Driver
@@ -95,6 +100,7 @@ def main():
     get_revenue(driver, data)
     get_date(driver, data)
     get_income(driver, data)
+    driver.quit()
     print(data)
     print("Tick : %s" % tick)
 
