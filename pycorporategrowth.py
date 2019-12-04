@@ -98,6 +98,7 @@ def parse_revenue_data(data):
     except:
         print("error while parsing revenue data")
         sys.exit(1)
+    data["revenue growth"].reverse()
 
 def parse_profit_data(data):
     try:
@@ -111,6 +112,7 @@ def parse_profit_data(data):
     except:
         print("Error while parsing profit")
         sys.exit(1)
+    data["profit"].reverse()
 
 def get_revenue(driver, data):
     try:
