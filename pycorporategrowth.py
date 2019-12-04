@@ -120,7 +120,7 @@ def get_income(driver, data):
 
 def get_date(driver, data):
     '''
-    Scrapping website with @driver and fillint @data with date
+    Scrapping website with @driver and filling @data with date
     '''
     try:
         i = 2
