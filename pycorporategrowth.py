@@ -1,6 +1,32 @@
 import sys
 from selenium import webdriver
+import matplotlib.pyplot as plt
+import numpy as np
 import time
+
+def create_graph_profit(data):
+    try:
+        plt.subplot(2,1,2)
+        plt.title("Profit of {} over time".format(data["name"]))
+        plt.plot(data["date"], data["profit"])
+        plt.grid(True)
+        plt.xlabel("Date")
+        plt.ylabel("Profit in %")
+    except:
+        print("Error while creating the profit graph")
+        sys.exit(1)
+
+def create_graph_revenue_growth(data):
+    try:
+        plt.subplot(2,1,1)
+        plt.title("Revenue Growth rate of : {}".format(data["name"]))
+        plt.plot(data["date"][1:],data["revenue growth"])
+        plt.grid(True)
+        plt.xlabel("Date")
+        plt.ylabel("Revenue Growth in %")
+    except:
+        print("Error while creating the revenue growth graph")
+        sys.exit(1)
 
 def open_url(driver, url):
     '''
@@ -98,7 +124,6 @@ def parse_revenue_data(data):
     except:
         print("error while parsing revenue data")
         sys.exit(1)
-    data["revenue growth"].reverse()
 
 def parse_profit_data(data):
     try:
@@ -112,7 +137,6 @@ def parse_profit_data(data):
     except:
         print("Error while parsing profit")
         sys.exit(1)
-    data["profit"].reverse()
 
 def get_revenue(driver, data):
     try:
@@ -148,7 +172,11 @@ def main():
     parse_revenue_data(data)
     parse_profit_data(data)
     driver.quit()
-    print(data)
+    data["date"].reverse()
+    create_graph_revenue_growth(data)
+    create_graph_profit(data)
+    plt.tight_layout()
+    plt.show()
     print("Tick : %s" % tick)
 
 main()
