@@ -14,9 +14,23 @@ def open_url(driver, url):
     return driver
 
 def compute_growth(year_one, year_two):
-    growth = (year_two - year_one) / year_one
-    growth = growth * 100
+    try:
+        growth = (year_two - year_one) / year_one
+        growth = growth * 100
+
+    except:
+        print("Error while computing growth")
+        sys.exit(1)
     return(growth)
+
+def compute_profit_margin(income, revenue):
+    try:
+        profit = (income / revenue) * 100
+
+    except:
+        print("Error while computing profit margin")
+        sys.exit(1)
+    return profit
 
 def init_driver():
     '''
@@ -38,6 +52,7 @@ def init_dictionnary():
         "income": [],
         "date": [],
         "revenue growth": [],
+        "profit": [],
         "name": None
     }
     return data
@@ -53,7 +68,8 @@ def get_income(driver, data):
         while i < 7:
             income = driver.find_element_by_xpath("""//*[@id="Col1-1-Financials-Proxy"]/section/div[4]/div[1]/\
                        div[1]/div[2]/div[11]/div[1]/div[{}]""".format(i)).text
-            data["income"].append(income.replace(',', ''))
+            income = income.replace(',', '')
+            data["income"].append(int(income))
             i += 1
     except:
         print("no more income to scrap")
@@ -74,7 +90,7 @@ def parse_revenue_data(data):
     try:
         i = len(data["revenue"]) - 1
         while i > 0:
-            growth = compute_growth(int(data["revenue"][i]), int(data["revenue"][i - 1]))
+            growth = compute_growth(data["revenue"][i], data["revenue"][i - 1])
             growth = round(growth, 2)
             data["revenue growth"].append(float(growth))
             i -= 1
@@ -83,12 +99,26 @@ def parse_revenue_data(data):
         print("error while parsing revenue data")
         sys.exit(1)
 
+def parse_profit_data(data):
+    try:
+        i = len(data["revenue"]) - 1
+
+        while i > -1:
+            profit = compute_profit_margin(data["income"][i], data["revenue"][i])
+            profit = round(profit, 2)
+            data["profit"].append(float(profit))
+            i -= 1
+    except:
+        print("Error while parsing profit")
+        sys.exit(1)
+
 def get_revenue(driver, data):
     try:
         i = 2
         while i < 7:
             revenue = driver.find_element_by_xpath("""//*[@id="Col1-1-Financials-Proxy"]/section/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[{}]""".format(i)).text
-            data["revenue"].append(revenue.replace(',', ''))
+            revenue = revenue.replace(',', '')
+            data["revenue"].append(int(revenue))
             i += 1
     except:
         print("no more revenue to scrap, end at", i)
@@ -114,6 +144,7 @@ def main():
     get_date(driver, data)
     get_income(driver, data)
     parse_revenue_data(data)
+    parse_profit_data(data)
     driver.quit()
     print(data)
     print("Tick : %s" % tick)
