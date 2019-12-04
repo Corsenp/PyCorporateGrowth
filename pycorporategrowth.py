@@ -104,6 +104,9 @@ def ask_for_tick():
     return tick
 
 def get_income(driver, data):
+    '''
+    Scrapping website with @driver and filling @data with the income
+    '''
     try:
         i = 2
         while i < 7:
