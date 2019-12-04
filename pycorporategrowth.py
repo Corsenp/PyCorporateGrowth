@@ -53,7 +53,7 @@ def get_income(driver, data):
         while i < 7:
             income = driver.find_element_by_xpath("""//*[@id="Col1-1-Financials-Proxy"]/section/div[4]/div[1]/\
                        div[1]/div[2]/div[11]/div[1]/div[{}]""".format(i)).text
-            data["income"].append(income)
+            data["income"].append(income.replace(',', ''))
             i += 1
     except:
         print("no more income to scrap")
@@ -70,12 +70,25 @@ def get_date(driver, data):
     except:
         print("No more date to scrap, end at", i)
 
+def parse_revenue_data(data):
+    try:
+        i = len(data["revenue"]) - 1
+        while i > 0:
+            growth = compute_growth(int(data["revenue"][i]), int(data["revenue"][i - 1]))
+            growth = round(growth, 2)
+            data["revenue growth"].append(float(growth))
+            i -= 1
+
+    except:
+        print("error while parsing revenue data")
+        sys.exit(1)
+
 def get_revenue(driver, data):
     try:
         i = 2
         while i < 7:
             revenue = driver.find_element_by_xpath("""//*[@id="Col1-1-Financials-Proxy"]/section/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]/div[{}]""".format(i)).text
-            data["revenue"].append(revenue)
+            data["revenue"].append(revenue.replace(',', ''))
             i += 1
     except:
         print("no more revenue to scrap, end at", i)
@@ -100,6 +113,7 @@ def main():
     get_revenue(driver, data)
     get_date(driver, data)
     get_income(driver, data)
+    parse_revenue_data(data)
     driver.quit()
     print(data)
     print("Tick : %s" % tick)
