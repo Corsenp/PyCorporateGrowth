@@ -166,6 +166,9 @@ def parse_profit_data(data):
         sys.exit(1)
 
 def get_revenue(driver, data):
+    '''
+    Scrapping website with @driver and filling @data withe revenue
+    '''
     try:
         i = 2
         while i < 7:
