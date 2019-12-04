@@ -1,6 +1,8 @@
 # PyCorporateGrowth
 
-PyCorporateGrowth is a school project (Assignment 9)
+PyCorporateGrowth is a school project (Assignment 9), the goal of this project is to scrape data from a corporation on yahoo finance website  
+and to display two graphs, the revenue growth of the corporation and its profits.  
+The script will ask the user for the tick of the corporation (Example : "F" for Ford, "TSLA" for Tesla, "GOOG" for Alphabet etc...)
 
 ## Installation
 
