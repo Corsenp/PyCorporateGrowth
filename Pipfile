@@ -10,6 +10,7 @@ pylint = "*"
 selenium = "*"
 pandas-datareader = "*"
 pandas = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.6"
