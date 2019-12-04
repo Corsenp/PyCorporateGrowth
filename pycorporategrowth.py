@@ -9,12 +9,15 @@ def create_graph_profit(data):
     Create Graph Profit
     '''
     try:
-        plt.subplot(2,1,2)
-        plt.title("Profit of {} over time".format(data["name"]))
-        plt.plot(data["date"], data["profit"])
-        plt.grid(True)
-        plt.xlabel("Date")
-        plt.ylabel("Profit in %")
+        if data["date"] and data["name"] and data["profit"]:
+            plt.subplot(2,1,2)
+            plt.title("Profit of {} over time".format(data["name"]))
+            plt.plot(data["date"], data["profit"])
+            plt.grid(True)
+            plt.xlabel("Date")
+            plt.ylabel("Profit in %")
+        else:
+            sys.exit(1)
     except:
         print("Error while creating the profit graph")
         sys.exit(1)
@@ -24,12 +27,15 @@ def create_graph_revenue_growth(data):
     Create Graph Revenue Growth
     '''
     try:
-        plt.subplot(2,1,1)
-        plt.title("Revenue Growth rate of : {}".format(data["name"]))
-        plt.plot(data["date"][1:],data["revenue growth"])
-        plt.grid(True)
-        plt.xlabel("Date")
-        plt.ylabel("Revenue Growth in %")
+        if data["date"] and data["revenue growth"] and data["name"]:
+            plt.subplot(2,1,1)
+            plt.title("Revenue Growth rate of : {}".format(data["name"]))
+            plt.plot(data["date"][1:],data["revenue growth"])
+            plt.grid(True)
+            plt.xlabel("Date")
+            plt.ylabel("Revenue Growth in %")
+        else:
+            sys.exit(1)
     except:
         print("Error while creating the revenue growth graph")
         sys.exit(1)
@@ -116,7 +122,7 @@ def get_income(driver, data):
             data["income"].append(int(income))
             i += 1
     except:
-        print("no more income to scrap")
+        pass
 
 def get_date(driver, data):
     '''
@@ -131,7 +137,7 @@ def get_date(driver, data):
             i += 1
     
     except:
-        print("No more date to scrap, end at", i)
+        pass
 
 def parse_revenue_data(data):
     '''
@@ -177,7 +183,7 @@ def get_revenue(driver, data):
             data["revenue"].append(int(revenue))
             i += 1
     except:
-        print("no more revenue to scrap, end at", i)
+        pass
 
 def get_company_name(driver, data):
     '''
