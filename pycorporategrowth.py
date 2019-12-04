@@ -20,6 +20,9 @@ def create_graph_profit(data):
         sys.exit(1)
 
 def create_graph_revenue_growth(data):
+    '''
+    Create Graph Revenue Growth
+    '''
     try:
         plt.subplot(2,1,1)
         plt.title("Revenue Growth rate of : {}".format(data["name"]))
