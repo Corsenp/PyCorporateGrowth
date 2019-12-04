@@ -5,6 +5,9 @@ import numpy as np
 import time
 
 def create_graph_profit(data):
+    '''
+    Create Graph Profit
+    '''
     try:
         plt.subplot(2,1,2)
         plt.title("Profit of {} over time".format(data["name"]))
