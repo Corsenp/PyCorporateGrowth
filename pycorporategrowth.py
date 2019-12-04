@@ -32,6 +32,7 @@ def init_dictionnary():
         "revenue": [],
         "income": [],
         "date": [],
+        "revenue growth": [],
         "name": None
     }
     return data
