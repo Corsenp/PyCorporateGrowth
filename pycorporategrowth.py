@@ -150,6 +150,9 @@ def parse_revenue_data(data):
         sys.exit(1)
 
 def parse_profit_data(data):
+    '''
+    Parsing list income and revenue of @data and filling profit
+    '''
     try:
         i = len(data["revenue"]) - 1
 
