@@ -96,6 +96,9 @@ def init_dictionnary():
     return data
 
 def ask_for_tick():
+    '''
+    Ask the user to enter a corporation tick
+    '''
     tick = input("Please enter the tick (Example : F):\n")
 
     return tick
