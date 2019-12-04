@@ -190,6 +190,9 @@ def get_company_name(driver, data):
         print("No company name was found")
 
 def fill_dictionnary(driver, data):
+    '''
+    Scrape all data needed with @driver and filling @data with it
+    '''
     try:
         get_company_name(driver, data)
         get_revenue(driver, data)
