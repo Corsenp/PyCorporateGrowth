@@ -134,6 +134,9 @@ def get_date(driver, data):
         print("No more date to scrap, end at", i)
 
 def parse_revenue_data(data):
+    '''
+    Parsing list revenue of @data and filling revenu growth
+    '''
     try:
         i = len(data["revenue"]) - 1
         while i > 0:
