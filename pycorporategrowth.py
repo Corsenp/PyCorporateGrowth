@@ -167,7 +167,7 @@ def parse_profit_data(data):
 
 def get_revenue(driver, data):
     '''
-    Scrapping website with @driver and filling @data withe revenue
+    Scrapping website with @driver and filling @data with revenue
     '''
     try:
         i = 2
