@@ -207,6 +207,9 @@ def fill_dictionnary(driver, data):
         sys.exit(1)
 
 def setting_up_graphs(data):
+    '''
+    Setting up the graphs with @data before displaying it
+    '''
     try:
         create_graph_revenue_growth(data)
         create_graph_profit(data)
