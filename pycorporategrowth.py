@@ -59,6 +59,9 @@ def compute_growth(year_one, year_two):
     return(growth)
 
 def compute_profit_margin(income, revenue):
+    '''
+    Computing profit margin with @income and @revenue
+    '''
     try:
         profit = (income / revenue) * 100
 
