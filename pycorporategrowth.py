@@ -180,6 +180,9 @@ def get_revenue(driver, data):
         print("no more revenue to scrap, end at", i)
 
 def get_company_name(driver, data):
+    '''
+    Scrapping website with @driver and filling @data with name
+    '''
     try:
         company_name = driver.find_element_by_xpath("""//*[@id="quote-header-info"]/div[2]/div[1]/div[1]/h1""").text
         data["name"] = company_name
