@@ -119,6 +119,9 @@ def get_income(driver, data):
         print("no more income to scrap")
 
 def get_date(driver, data):
+    '''
+    Scrapping website with @driver and fillint @data with date
+    '''
     try:
         i = 2
         while i < 7:
