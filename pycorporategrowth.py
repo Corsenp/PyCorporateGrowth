@@ -46,6 +46,9 @@ def open_url(driver, url):
     return driver
 
 def compute_growth(year_one, year_two):
+    '''
+    Computing growth from @year_one to @year_two
+    '''
     try:
         growth = (year_two - year_one) / year_one
         growth = growth * 100
