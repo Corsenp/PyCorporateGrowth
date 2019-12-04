@@ -156,6 +156,31 @@ def get_company_name(driver, data):
     except:
         print("No company name was found")
 
+def fill_dictionnary(driver, data):
+    try:
+        get_company_name(driver, data)
+        get_revenue(driver, data)
+        get_date(driver, data)
+        get_income(driver, data)
+        parse_revenue_data(data)
+        parse_profit_data(data)
+        data["date"].reverse()
+    
+    except:
+        print("Error while filling data")
+        sys.exit(1)
+
+def setting_up_graphs(data):
+    try:
+        create_graph_revenue_growth(data)
+        create_graph_profit(data)
+        plt.tight_layout()
+        plt.show()
+    
+    except:
+        print("Error while creating graphs")
+        sys.exit(1)
+
 def main():
     '''
     Main function
@@ -165,18 +190,8 @@ def main():
     url = 'https://finance.yahoo.com/quote/' + tick + '/financials?p=' + tick
     driver = open_url(driver, url)
     data = init_dictionnary()
-    get_company_name(driver, data)
-    get_revenue(driver, data)
-    get_date(driver, data)
-    get_income(driver, data)
-    parse_revenue_data(data)
-    parse_profit_data(data)
+    fill_dictionnary(driver, data)
+    setting_up_graphs(data)
     driver.quit()
-    data["date"].reverse()
-    create_graph_revenue_growth(data)
-    create_graph_profit(data)
-    plt.tight_layout()
-    plt.show()
-    print("Tick : %s" % tick)
 
 main()
